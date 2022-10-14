@@ -11,22 +11,27 @@ export class TodoComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  list:any[]=[];
-  resetForm: HTMLFormElement = <HTMLFormElement>document.getElementById('bo');
-  add(item:String)
+  todo:any[]=[];
+  dateArr:any[]=[];
+  add(item:String,date:any,idTodo:any,idDate:any)
     {
-      
-this.list.push({item});
-console.log(this.list)
+      if(item != ''&& date != '' ){
+        this.todo.push({item});
+        this.dateArr.push({date});
+        idTodo.value = '';
+        idDate.value = '';
+        //this.list.push({date});
+        //console.log(this.list);
+      }
+      else
+        alert("Task or date is missing");
 
   }
   remove(i:number)
   {
-this.list.splice(i,1);
+    this.todo.splice(i,1);
+    this.dateArr.splice(i,1);
   }
-  reset(){
-    if(this.resetForm)
-      this.resetForm.reset();
-  }
+  
 }
 
